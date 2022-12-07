@@ -5,8 +5,6 @@ namespace AsiDotNet;
 
 internal class Main
 {
-    public static bool Terminating;
-
     public static void ScriptMain()
     {
         Logger.Info("AsiDotNet started");
@@ -42,11 +40,9 @@ internal class Main
             case DLL_PROCESS_ATTACH:
                 ScriptRegister(hModule, ScriptMain);
                 break;
-            case DLL_PROCESS_DETACH:
 
+            case DLL_PROCESS_DETACH:
                 // Doesn't seem to work?
-                Terminating = true;
-                Logger.Info("Detaching...");
                 ScriptUnregister(hModule);
                 break;
         }

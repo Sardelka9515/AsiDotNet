@@ -153,29 +153,4 @@ public static unsafe class NativeFunc
     {
         return Invoke(hash, ConvertPrimitiveArguments(args));
     }
-
-    #region ScriptHookV Imports
-
-    /// <summary>
-    ///     Initializes the stack for a new script function call.
-    /// </summary>
-    /// <param name="hash">The function hash to call.</param>
-    [DllImport("ScriptHookV.dll", ExactSpelling = true, EntryPoint = "?nativeInit@@YAX_K@Z")]
-    private static extern void NativeInit(ulong hash);
-
-    /// <summary>
-    ///     Pushes a function argument on the script function stack.
-    /// </summary>
-    /// <param name="val">The argument value.</param>
-    [DllImport("ScriptHookV.dll", ExactSpelling = true, EntryPoint = "?nativePush64@@YAX_K@Z")]
-    private static extern void NativePush64(ulong val);
-
-    /// <summary>
-    ///     Executes the script function call.
-    /// </summary>
-    /// <returns>A pointer to the return value of the call.</returns>
-    [DllImport("ScriptHookV.dll", ExactSpelling = true, EntryPoint = "?nativeCall@@YAPEA_KXZ")]
-    private static extern ulong* NativeCall();
-
-    #endregion
 }

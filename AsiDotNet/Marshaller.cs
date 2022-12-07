@@ -30,6 +30,7 @@ internal static unsafe class Marshaller
     /// </summary>
     /// <param name="str">The string to pin to a fixed pointer.</param>
     /// <returns>A pointer to the pinned memory containing the string.</returns>
+    /// <remarks>Memory will be freed after each tick, use <see cref="StringToCoTaskMemASCII"/> if you want to pin string in a persistent memory</remarks>
     public static IntPtr PinString(string str)
     {
         var handle = StringToCoTaskMemASCII(str);
